@@ -49,12 +49,27 @@ function filterUnrepeatedWords(sentence) {
         }
       }
     }
-  
     return undefined;
   }
+
+  function getKeysAndValues(obj) {
+    return Object.entries(obj);
+  }
+
+  function getTopPerformers(users) {
+    return Object.values(users)
+      .filter(user => 
+        user.scores.math > 80 && 
+        user.scores.english > 80
+      )
+      .map(user => user.name);
+  }
+  
 
   module.exports = {sumArray,
   getAllValues,
   swapCoordinates,
   filterUnrepeatedWords,
-  findNestedKey};
+  findNestedKey,
+  getKeysAndValues,
+  getTopPerformers};
