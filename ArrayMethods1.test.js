@@ -1,24 +1,21 @@
-const {filterScore, increaseScoreByFive, SquareOfEachNumber, DistributeBooks, AfternoonClasses, calculateExpenses} = require("./Arraymethods1");
+const {filterScore, increaseScoreByFive, SquareOfEachNumber, DistributeBooks, AfternoonClasses, calculateExpenses, letterGrade, filterHealthyItems} = require("./Arraymethods1");
 
 test("scores above 70 is filtered", () => {
     const testScores = [85, 62, 90, 74, 58, 99, 47, 81, 70, 66];
     const expected = [85,90,74,99,81,70];
-    const result = filterScore(testScores);
-    expect(result).toEqual(expected);
+    expect(filterScore(testScores)).toEqual(expected);
 })
 
 test("scores increase by five", () => {
     const scores = [85, 92, 78, 88, 95];
     const expected = [90, 97, 83, 93, 100];
-    const result = increaseScoreByFive(scores)
-    expect(result).toEqual(expected);
+    expect(increaseScoreByFive(scores)).toEqual(expected);
 })
 
 test("square of each numbers", () => {
     const numbers =  [2, 4, 6, 8, 10];
     const expected = [4,16,36,64,100];
-    const result = SquareOfEachNumber(numbers);
-    expect(result).toEqual(expected);
+    expect( SquareOfEachNumber(numbers)).toEqual(expected);
 })
 
 test("Each member receives the correct book", () => {
@@ -30,8 +27,7 @@ test("Each member receives the correct book", () => {
         "Sophia receives the book To Kill a Mockingbird",
         "Daniel receives the book The Great Gatsby"
     ];
-    const result = DistributeBooks(members, books);
-    expect(result).toEqual(expected);
+    expect(DistributeBooks(members, books)).toEqual(expected);
 });
 
 test("classes offered in the afternoon", () => {
@@ -47,6 +43,18 @@ test("total expenses", () => {
         "transportation": 50, 
         "entertainment": 80 
     };
-    const result = calculateExpenses(expenses);
-    expect(result).toBe(380)
+    expect(calculateExpenses(expenses)).toBe(380)
 })
+
+test("letter grade",() => {
+    const studentScores = [95, 78, 85, 60, 45, 92];
+    expect(letterGrade(studentScores)).toEqual(["A","C","B","D","F","A"])
+})
+
+test("Handles items with missing isHealthy property", () => {
+    const shoppingList = [
+        { name: "Apples", category: "Fruits", },
+        { name: "Carrots", category: "Vegetables", isHealthy: true }
+    ];
+    expect(filterHealthyItems(shoppingList)).toEqual(["Carrots"]);
+});

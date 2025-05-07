@@ -32,6 +32,21 @@ function calculateExpenses(expenses) {
     return totalExpenses;
 }
 
+function letterGrade(grades) {
+    return grades.map(grade => {
+        if (grade >= 90 && grade <= 100) return "A";
+        if (grade >= 80 && grade <= 89) return "B";
+        if (grade >= 70 && grade <= 79) return "C";
+        if (grade >= 60 && grade <= 69) return "D";
+        return "F";
+    });
+}
+
+function filterHealthyItems(shoppingList) {
+    return shoppingList.filter(item => item.isHealthy === true).map(item => item.name);
+}
+
+
 console.log(filterScore([85, 62, 90, 74, 58, 99, 47, 81, 70, 66]));
 console.log(increaseScoreByFive([85, 92, 78, 88, 95]));
 console.log(SquareOfEachNumber([2, 4, 6, 8, 10]));
@@ -43,5 +58,14 @@ console.log(calculateExpenses({
     "transportation": 50, 
     "entertainment": 80 
 }));
+console.log(letterGrade([95, 78, 85, 60, 45, 92]));
+console.log(filterHealthyItems([
+     { name: 'Apples', category: 'Fruits', isHealthy: true },
+     { name: 'Potato Chips', category: 'Snacks', isHealthy: false },
+     { name: 'Carrots', category: 'Vegetables', isHealthy: true },
+     { name: 'Chocolate Bars', category: 'Sweets', isHealthy: false },
+     { name: 'Greek Yogurt', category: 'Dairy', isHealthy: true },
+     { name: 'Soda', category: 'Beverages', isHealthy: false }
+    ]));
 
-module.exports = {filterScore, increaseScoreByFive, SquareOfEachNumber, DistributeBooks, AfternoonClasses, calculateExpenses};
+module.exports = {filterScore, increaseScoreByFive, SquareOfEachNumber, DistributeBooks, AfternoonClasses, calculateExpenses, letterGrade, filterHealthyItems};
